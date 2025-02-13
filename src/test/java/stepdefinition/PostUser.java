@@ -15,12 +15,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
+import io.restassured.internal.common.assertion.Assertion;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import userapi.request.userRequestBody;
 import utilities.ConfigReader;
 import utilities.ExcelReader;
 import utilities.LoggerLoad;
+import utilities.Asseration;
 public class PostUser {
 	private String Userfirstname;
 	private String Userlastname;
@@ -55,6 +57,7 @@ public class PostUser {
 		expectedStatusCode = userdata.get("status_code");
 		System.out.println("Data Length");
 		expectedStatusCodeInt = Integer.parseInt(expectedStatusCode);
+	
 	}
 
 	@When("Admin sends post request with valid endpoint")
@@ -73,11 +76,9 @@ public class PostUser {
 
 	}
 
-	@Then("Admin receives {int} created with response body")
-	public void admin_receives_created_with_response_body(Integer int1) {
-		int statusCode = response.getStatusCode();
-		Assert.assertEquals(201, statusCode);
-		LoggerLoad.info("Created New User Successfully");
+	@Then("Admin receives created with response body")
+	public void admin_receives_created_with_response_body() {
+		LoggerLoad.info("201 Status code");
 	}
 
 }

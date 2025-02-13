@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import userapi.payload.UserAddress;
 import userapi.payload.UserPayload;
+import utilities.LoggerLoad;
 
 public class userRequestBody {
 	 public static UserPayload userpayload=new UserPayload();
@@ -20,8 +21,8 @@ public static String  postBody(String userFirstName, String userLastName, String
 	userpayload.setUser_last_name(userLastName);
 	userpayload.setUser_contact_number(userContactNumber);
 	userpayload.setUser_email_id(userEmailId);
-	userAddress.setPlotNumber(plotNumber);
 	UserAddress userAddress=new UserAddress();
+	userAddress.setPlotNumber(plotNumber);
 	userAddress.setStreet(street);
 	userAddress.setState(state);
 	userAddress.setCountry(country);
@@ -38,5 +39,6 @@ public static String postBody(String userFirstName,String userLastName, String u
 	userpayload.setUser_email_id(userEmailId);
 	ObjectMapper objectMapper = new ObjectMapper();
     return objectMapper.writeValueAsString(userAddress);
+  
 }
 }

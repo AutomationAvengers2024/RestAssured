@@ -9,9 +9,10 @@ package utilities;
 	public class ConfigReader {
 
 	    private static Properties prop = new Properties();
-  {
+ static {
 	        try {
-	            InputStream inputStream = new FileInputStream("C:\\Users\\karth\\eclipse-workspace\\RestAssuredAPI\\src\\test\\resources\\config.properties");
+	           // InputStream inputStream = new FileInputStream("C:\\Users\\karth\\eclipse-workspace\\RestAssuredAPI\\src\\test\\resources\\config.properties");
+	        	InputStream inputStream = new FileInputStream("src/test/resources/config.properties");
 	            prop.load(inputStream);
 	        } catch (IOException e) {
 	            e.printStackTrace();
@@ -25,7 +26,9 @@ package utilities;
 	    	return getProperty("baseurl");
 	    }
 	    public static String getUsername1() {
+	    	System.out.println("username");
 	        return getProperty("username");
+	       
 	    }
 	    public static String getPassword() {
 	        return getProperty("password");
